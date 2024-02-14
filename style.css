@@ -85,11 +85,12 @@ a {
     }
 }
 
-#navbar li{
+#navbar li {
     display: inline-block;
 }
-#navbar li a{
-    color:rgb(13, 26, 38);
+
+#navbar li a {
+    color: rgb(13, 26, 38);
     display: block;
     font-size: 0.7em;
     height: 30px;
@@ -103,22 +104,104 @@ a {
     -webkit-transition: all 0.5s ease;
 }
 
-#navbar li a:hover{
+#navbar li a:hover {
     /*border-bottom:1px solid rgb(28,121,184);*/
-    color: rgb(28,121,184);
+    color: rgb(28, 121, 184);
     transition: all 1s ease;
     -webkit-transition: all 1s ease;
 
 }
+
 /*Animation Bottom Line*/
-#navbar li a:before, #navbar li a:after{
+#navbar li a:before,
+#navbar li a:after {
     content: "";
     position: absolute;
     width: 0%;
     height: 1px;
-    bottom:-1px;
-    background: rgb(13,26,38);
+    bottom: -1px;
+    background: rgb(13, 26, 38);
 }
-#navbar li a:before, #navbar li a:after{
 
+#navbar li a:before {
+    left: 0;
+    transition: 0.5s;
+}
+
+#navbar li a:hover:before {
+    background: rgb(13, 26, 38);
+    width: 100%;
+    transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
+}
+
+#navbar li a:hover:after {
+    background: transparent;
+    width: 100%;
+    /*transition: 0s;*/
+}
+
+/* MOBILE MENU ICON */
+@media(max-width:640px) {
+    .menuicon {
+        cursor: pointer;
+        display: block;
+        position: fixed;
+        right: 15px;
+        top: 20px;
+        height: 23px;
+        width: 27px;
+        z-index: 12;
+    }
+}
+
+.icon-bars {
+    background: rgb(13, 26, 38);
+    position: absolute;
+    left: 1px;
+    top: 45%;
+    height: 2px;
+    width: 20px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.icon-bars::before {
+    background: rgb(13, 26, 38);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -8px;
+    height: 2px;
+    width: 20px;
+    -webkit-transition: 0.3s width 0.4s;
+    transition: 0.3s width 0.4s;
+
+}
+
+.icon-bars::after {
+    margin-top: 0px;
+    background: rgb(13, 26, 38);
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 2px;
+    width: 20px;
+    -webkit-transition: 0.3s width 0.4s;
+    transition: 0.3s width 0.4s;
+
+}
+
+/* BARS SHADOW */
+.icon-bars.overlay{
+    background: rgb(97,114,129);
+    background: rgb(183,199,211);
+    width: 20px;
+    animation: middleBar 3s infinite 0.5s;
+    -webkit-animation: middleBar 3s infinite 0.5s;
+}
+@keyframes middleBar{
+    0% {width:0px}
+    50%{width:20px}
+    100%{width:0px}
 }
